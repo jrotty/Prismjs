@@ -55,15 +55,15 @@ class Prismjs_Plugin implements Typecho_Plugin_Interface
     public static function footer()
     {
         if (Helper::options()->plugin('Prismjs')->showln)
-            echo "<script>var pres = document.getElementsByTagName('pre');
+            echo "<script data-no-instant>var pres = document.getElementsByTagName('pre');
                 for (var i = 0; i < pres.length; i++)
                     if (pres[i].getElementsByTagName('code').length > 0)
                         pres[i].className  = 'line-numbers';
                 </script>";
         $jsUrl = Helper::options()->pluginUrl . '/Prismjs/prism.js';
-        echo '<script src="' . $jsUrl . '"></script>';
+        echo '<script src="' . $jsUrl . '" data-no-instant></script>';
         if (Helper::options()->plugin('Prismjs')->forceWrap && Helper::options()->plugin('Prismjs')->showln)
-            echo '<script defer="defer" src="' . Helper::options()->pluginUrl . '/Prismjs/line-number-wrap-fix.js' . '"></script>';
+            echo '<script defer="defer" src="' . Helper::options()->pluginUrl . '/Prismjs/line-number-wrap-fix.js' . '" data-no-instant></script>';
     }
 
     public static function parse($text, $widget, $lastResult)
